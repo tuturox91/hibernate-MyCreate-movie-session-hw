@@ -3,14 +3,31 @@
 Let's continue working on our Cinema project.
 
 Your task is to implement the following steps:
-- implement `CinemaHall` class
-- implement `MovieSession` class - be careful adding relations with `Movie` and `CinemaHall`
+- create `src/main/resources/hibernate.cfg.xml`
+- create `CinemaHall` class
+- create `MovieSession` class - be careful adding relations with `Movie` and `CinemaHall`
 - add implementations of `getAll()` method to `MovieDaoImpl` and `MovieServiceImpl`
-- implement `CinemaHallDaoImpl` and `CinemaHallServiceImpl`
-- implement `MovieSessionDaoImpl` and `MovieSessionServiceImpl` - keep in mind 
-that method `findAvailableSessions()` expects a `LocalDate` that represents the day 
+- create `CinemaHallDaoImpl` and `CinemaHallServiceImpl`.
+The service layer should have the following methods:
+```java
+    CinemaHall add(CinemaHall cinemaHall);
+
+    CinemaHall get(Long id);
+
+    List<CinemaHall> getAll();
+```
+- create `MovieSessionDaoImpl` and `MovieSessionServiceImpl`.
+The service layer should have the following methods:
+```java
+    MovieSession add(MovieSession movieSession);
+
+    MovieSession get(Long id);
+
+    List<MovieSession> findAvailableSessions(Long movieId, LocalDate date);
+```
+Keep in mind that method `findAvailableSessions()` expects a `LocalDate` that represents the day 
 chosen by a customer to visit our cinema, so your task here is to return all MovieSessions 
-that will be running between 00:00 and 23:59:59 on that particular day
+that will be running between 00:00 and 23:59:59 on that particular day.
 - make `mate/academy/Main.java` work (you should be able to run `main()` method without any errors)
 - use annotations and the annotation injector located in the `lib` folder
 
